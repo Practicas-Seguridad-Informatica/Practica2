@@ -36,9 +36,34 @@ public class Arbol
 	{
 		this.root = root;
 	}
+
+	private boolean hasRama()
+	{
+		if(izquierda == null)
+		{
+			return false;
+		}
+
+		return true;
+	}
 	
 	private void recorrerArbol()
 	{
-		
+		if(izquierda.hasRama())
+		{
+			izquierda.setCode("0");
+			izquierda.recorrerArbol();
+		}
+
+		if(derecha.hasRama())
+		{
+			derecha.setCode("1");
+			derecha.recorrerArbol();
+		}
+	}
+
+	private void setCode(String num)
+	{
+		this.code = this.code + num;
 	}
 }
