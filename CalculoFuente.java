@@ -1,4 +1,4 @@
-package p2ma;
+package Practica2;
 
 import java.util.ArrayList;
 import java.lang.Math;
@@ -148,6 +148,15 @@ public class CalculoFuente
         
         
         System.out.println("---------" + entropia);
+
+        /*arrCounter = new ArrayList<Integer>();
+
+        arrCounter.add(3);
+        arrCounter.add(2);
+        arrCounter.add(2);
+        arrCounter.add(1);
+        arrCounter.add(1);
+        arrCounter.add(1);*/
         
         //Calculamos Huffman
         //----------------------------------------------------
@@ -161,15 +170,11 @@ public class CalculoFuente
         	ramas.add(nuevaRama);
         }
         
-        int auxCounter = 0;
-
-        int max = ramas.get(0).getNum() + 1;
-        
         while(ramas.size() != 1)
         {   
 	    	//Buscamos los dos más pequeños
-	    	int pos1 = max;
-	    	int pos2  = max;
+	    	int pos1 = 1000;
+	    	int pos2 = 1000;
 	    	int posNumMasPequenio = 0;
 	    	int posSegNumMasPequenio = 0;
 	        
@@ -203,7 +208,7 @@ public class CalculoFuente
 	    	
 	    	ArrayList<Arbol> arrAux = new ArrayList<Arbol>();
 	    	
-	    	//Añadimos todos los que no han variado (los que no han sido sumados
+	    	//Añadimos todos los que no han variado (los que no han sido sumados)
 	    	for(int i = 0; i < ramas.size(); i++)
 	    	{
                 if(i != posNumMasPequenio && i != posSegNumMasPequenio) //En el nuevo array metemos todos menos los dos más pequeños
@@ -240,7 +245,7 @@ public class CalculoFuente
         
         System.out.println("El root tiene un valor de: " + ramas.get(0).getNum());
         	
-        
+        ramas.get(0).recorrerArbol("");
     }   
     
 }

@@ -1,4 +1,4 @@
-package p2ma;
+package Practica2;
 
 public class Arbol 
 {
@@ -47,19 +47,28 @@ public class Arbol
 		return true;
 	}
 	
-	private void recorrerArbol()
+	public void recorrerArbol(String code)
 	{
 		if(izquierda.hasRama())
 		{
-			izquierda.setCode("0");
-			izquierda.recorrerArbol();
+			izquierda.recorrerArbol(code + "0");
+		}
+		else
+		{
+			izquierda.setCode(code);
+			System.out.println(code);
 		}
 
 		if(derecha.hasRama())
 		{
-			derecha.setCode("1");
-			derecha.recorrerArbol();
+			derecha.recorrerArbol(code + "1");
 		}
+		else
+		{
+			derecha.setCode(code);
+			System.out.println(code);
+		}
+		
 	}
 
 	private void setCode(String num)
