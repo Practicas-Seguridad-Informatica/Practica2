@@ -149,14 +149,14 @@ public class CalculoFuente
         
         System.out.println("---------" + entropia);
 
-        /*arrCounter = new ArrayList<Integer>();
+        arrCounter = new ArrayList<Integer>();
 
         arrCounter.add(3);
         arrCounter.add(2);
         arrCounter.add(2);
         arrCounter.add(1);
         arrCounter.add(1);
-        arrCounter.add(1);*/
+        arrCounter.add(1);
         
         //Calculamos Huffman
         //----------------------------------------------------
@@ -246,6 +246,14 @@ public class CalculoFuente
         System.out.println("El root tiene un valor de: " + ramas.get(0).getNum());
         	
         ramas.get(0).recorrerArbol("");
+/*
+        String code = "";
+
+        code = code + "0";
+        code = code + "1";
+        code = code + "0";
+
+        System.out.println("El resultado es: " + code);*/
     }   
     
 }

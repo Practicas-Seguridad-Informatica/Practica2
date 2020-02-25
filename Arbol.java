@@ -49,14 +49,16 @@ public class Arbol
 	
 	public void recorrerArbol(String code)
 	{
+		System.out.println("Num: " + this.num);
+
 		if(izquierda.hasRama())
 		{
 			izquierda.recorrerArbol(code + "0");
 		}
 		else
 		{
+			//code = code + "0";
 			izquierda.setCode(code);
-			System.out.println(code);
 		}
 
 		if(derecha.hasRama())
@@ -65,8 +67,8 @@ public class Arbol
 		}
 		else
 		{
+			//code = code + "1";
 			derecha.setCode(code);
-			System.out.println(code);
 		}
 		
 	}
