@@ -202,11 +202,14 @@ public class CalculoFuente
 	    	ArrayList<Arbol> arrAux = new ArrayList<Arbol>();
 	    	
 	    	//Añadimos todos los que no han variado (los que no han sido sumados
-	    	for(int i = 0; i < ramas.size() - 2; i++)
+	    	for(int i = 0; i < ramas.size(); i++)
 	    	{
-	    		arrAux.add(ramas.get(i));
+                if(i != posNumMasPequenio && i != posSegNumMasPequenio) //En el nuevo array metemos todos menos los dos más pequeños
+                {
+	    		    arrAux.add(ramas.get(i));
+                }
 	    	}
-	    	//Por último aniadimos el resultado de la suma
+	    	//Por último aniadimos el resultado de la suma de esos dos que no hemos metido
 	    	Arbol arbolAux = new Arbol(res);
 	    	arrAux.add(arbolAux);
 	    	
