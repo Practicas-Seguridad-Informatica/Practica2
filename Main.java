@@ -1,4 +1,4 @@
-package Practica2;
+package p2ma;
 
 public class Main 
 {

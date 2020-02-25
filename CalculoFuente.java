@@ -1,6 +1,7 @@
-package Practica2;
+package p2ma;
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class CalculoFuente
 {
@@ -8,25 +9,28 @@ public class CalculoFuente
     private ArrayList<String> arrSimbolos;
     private int cantidadSimbolos;
 
-    //Constructor de la clase. Dentro inicializamos la variable global txt donde estar� el texto a resolver
-    //Tambi�n se inicializar�n los ArrayList necesarios para el programa
+    //Constructor de la clase. Dentro inicializamos la variable global txt donde estara el texto a resolver
+    //Tambien se inicializaron los ArrayList necesarios para el programa
     public CalculoFuente(int cantidadSimbolos)
     {
-        txt = "La noche cae, brumosa ya y morada.  "
-				+ "Vagas claridades malvas y verdes perduran tras la torre de la iglesia.  "
-				+ "El camino sube, lleno de sombras, de campanillas, de fragancia de hierba,  "
-				+ "de canciones, de cansancio y de anhelo.";
+        txt = "Existe una cosa muy misteriosa, pero muy cotidiana. Todo el mundo participa de ella,  " + 
+        		"todo el mundo la conoce, pero muy pocos se paran a pensar en ella.  " + 
+        		"Casi todos se limitan a tomarla como viene, sin hacer preguntas.  " + 
+        		"Esta cosa es el tiempo.";
 
-        //En este arryList guardaremos los s�mbolos que componen el texto
+        //En este arryList guardaremos los simbolos que componen el texto
         arrSimbolos = new ArrayList<String>();
         
-        //Podremos pasar al programa un par�metro para sabe cada cu�ntas letras hay un s�mbolo. (As� tenemos en cuenta el caso del ejercicio 2)
+        //Podremos pasar al programa un parametro para sabe cada cuantas letras hay un simbolo. (Asi tenemos en cuenta el caso del ejercicio 2)
         this.cantidadSimbolos = cantidadSimbolos; 
         
         llenarArraySimbolos();
+        
+        System.out.println("El tamano es: " + txt.length());
     }
-
-    //M�todo utilizado para meter el string txt en el arrSimbolos
+   
+    
+    //Metodo utilizado para meter el string txt en el arrSimbolos
     public void llenarArraySimbolos()
     {
         int cont = 0;
@@ -35,47 +39,47 @@ public class CalculoFuente
         {
             String aux = "";
 
-            for(int j = 0; j < cantidadSimbolos; j++) //En funci�n de cada cu�ntos caracteres se componga un s�mbolo...
+            for(int j = 0; j < cantidadSimbolos; j++) //En funcion de cada cuantos caracteres se componga un simbolo...
             {
                 if(cont < txt.length()) //Comprobamos que no hayamos llegado al final del texto (en caso de que este no tenga una longitud tal que pueda dividirse con decimales)
                 {
-                    aux = aux + String.valueOf(txt.charAt(cont)); //iremos formando Strings para cada s�mbolo (en funci�n de la longitud que nos hayan dicho que tienen los s�mbolos)
+                    aux = aux + String.valueOf(txt.charAt(cont)); //iremos formando Strings para cada simbolo (en funcion de la longitud que nos hayan dicho que tienen los simbolos)
                     cont++;
                 }
             }
 
-            arrSimbolos.add(aux);  //Una vez formado el s�mbolo lo a�adimos al arraylist y as� hasta que terminemos el texto
+            arrSimbolos.add(aux);  //Una vez formado el simbolo lo aniadimos al arraylist y asi hasta que terminemos el texto
         }
     }
 
-    //Con este m�todo calcularemos cu�ntas veces se repite cada s�mbolo.
+    //Con este metodo calcularemos cuantas veces se repite cada simbolo.
     public void resolver() 
     {
-        ArrayList<String> cadaSimbolo = new ArrayList<String>(); //Aqu� guardaremos de forma individual cada uno de los s�mbolos existentes en el texto.
-        ArrayList<Integer> arrCounter = new ArrayList<Integer>(); //En este arrayList guardarmeos un contador para cada posici�n de los s�mbolos del anterior arraylist que aumentar� para cada s�mbolo cuando estos se repitan
+        ArrayList<String> cadaSimbolo = new ArrayList<String>(); //Aqui guardaremos de forma individual cada uno de los simbolos existentes en el texto.
+        ArrayList<Integer> arrCounter = new ArrayList<Integer>(); //En este arrayList guardarmeos un contador para cada posicion de los simbolos del anterior arraylist que aumentara para cada simbolo cuando estos se repitan
 
-        for(int i = 0; i < arrSimbolos.size(); i++) //Recorremos el array que contiene todos los s�mbolos
+        for(int i = 0; i < arrSimbolos.size(); i++) //Recorremos el array que contiene todos los simbolos
         {
-            if(cadaSimbolo.size() == 0) //Si es el primer s�mbolo de todos lo a�adimos directamente porque no puede estar ya dentro (el array est� vac�o a�n)
+            if(cadaSimbolo.size() == 0) //Si es el primer simbolo de todos lo aniadimos directamente porque no puede estar ya dentro (el array esta vacio aun)
             {
                 cadaSimbolo.add(arrSimbolos.get(i));
                 arrCounter.add(1);
             }
-            else  //Si no es el primer s�mbolo del texto
+            else  //Si no es el primer simbolo del texto
             {
-                boolean comprobacion = false; //Flag para saber si un s�mbolo est� ya dentro de nuestro array de �nicos o no
+                boolean comprobacion = false; //Flag para saber si un simbolo esta ya dentro de nuestro array de unicos o no
 
-                for(int j = 0; j < cadaSimbolo.size(); j++) //Recorremmos nuestro array de s�mbolos �nicos para comprobar si ha sido a�adido ya o no
+                for(int j = 0; j < cadaSimbolo.size(); j++) //Recorremmos nuestro array de simbolos unicos para comprobar si ha sido aniadido ya o no
                 {
-                    if(cadaSimbolo.get(j).equals(arrSimbolos.get(i))) //Si el s�mbolo ya est� dentro del array
+                    if(cadaSimbolo.get(j).equals(arrSimbolos.get(i))) //Si el simbolo ya esta dentro del array
                     {
-                        int aux = arrCounter.get(j) + 1; //Aumentamos el contador de esa posici�n para ese s�mbolo
+                        int aux = arrCounter.get(j) + 1; //Aumentamos el contador de esa posicion para ese simbolo
                         arrCounter.set(j, aux); //Y sustituimos el valor (vamos, como hacer counter++);
                         comprobacion = true; //Cambiamos el flag para indicar que el s�mbolo estaba
                     }
                 }
 
-                if(!comprobacion) //Si al terminar de comprobar ese s�mbolo para cada uno de los que ya tenemos guardados, vemos que no ha coincidido, lo a�adiremos
+                if(!comprobacion) //Si al terminar de comprobar ese simbolo para cada uno de los que ya tenemos guardados, vemos que no ha coincidido, lo aniadiremos
                 {
                     cadaSimbolo.add(arrSimbolos.get(i));
                     arrCounter.add(1); //Y le creamos su contador
@@ -106,7 +110,7 @@ public class CalculoFuente
 
             for(int i = 0; i < cadaSimbolo.size() - 1; i++)
             {
-                if(arrCounter.get(i) < arrCounter.get(i + 1)) //Si el número que está a la derecha es mayor...
+                if(arrCounter.get(i) < arrCounter.get(i + 1)) //Si el numero que está a la derecha es mayor...
                 {
                     terminado = false;  //Cambiamos el terminado a false porque hemos encontrado un intercambio posible, así que no hemos terminado
                     int auxInt = arrCounter.get(i);
@@ -132,5 +136,106 @@ public class CalculoFuente
         {
         	System.out.print(arrCounter.get(i) + " ");
         }
-    }
+        
+        //Calculamos la entropía de la Fuente 
+        
+        double entropia = 0;
+        
+        for(int i = 0; i < arrCounter.size(); i++)
+        {
+        	entropia += ((double)arrCounter.get(i) / (double)txt.length()) * (double)(Math.log((double)txt.length() / (double)arrCounter.get(i))) / (double)Math.log(2);
+        }
+        
+        
+        System.out.println("---------" + entropia);
+        
+        //Calculamos Huffman
+        //----------------------------------------------------
+        ArrayList<Arbol> ramas = new ArrayList<Arbol>();
+        
+    	//Convertimos cada frecuencia en una rama del arbol
+        for(int i = 0; i < arrCounter.size(); i++)
+        {
+        	Arbol nuevaRama = new Arbol(arrCounter.get(i));
+        	
+        	ramas.add(nuevaRama);
+        }
+        
+        int auxCounter = 0;
+        
+        while(ramas.size() != 1)
+        {   
+	    	//Buscamos los dos más pequeños
+	    	int pos1 = ramas.get(0).getNum();
+	    	int pos2  = ramas.get(0).getNum();
+	    	int posNumMasPequenio = 0;
+	    	int posSegNumMasPequenio = 0;
+	        
+	    	//Encontramos el número más pequenio
+	    	for(int i = 0; i < ramas.size(); i++)
+	    	{
+	    		if(pos1 > ramas.get(i).getNum())
+	    		{
+	    			pos1 = ramas.get(i).getNum();
+	    			posNumMasPequenio = i;
+	    		}
+	    	}
+	    	
+	    	//Encontramos el segundo número más pequenio
+	    	for(int i = 0; i < ramas.size(); i++)
+	    	{
+	    		if(i != posNumMasPequenio)
+	    		{
+		    		if(pos2 > ramas.get(i).getNum())
+		    		{
+		    			pos2 = ramas.get(i).getNum();
+		    			posSegNumMasPequenio = i;
+		    		}
+	    		}
+	    	}
+	    	
+	    	//Una vez encontrados los dos más pequenios los sumamos
+	    	int res = pos1 + pos2;
+	    	
+	    	//Construimos un nuevo array<
+	    	
+	    	ArrayList<Arbol> arrAux = new ArrayList<Arbol>();
+	    	
+	    	//Añadimos todos los que no han variado (los que no han sido sumados
+	    	for(int i = 0; i < ramas.size() - 2; i++)
+	    	{
+	    		arrAux.add(ramas.get(i));
+	    	}
+	    	//Por último aniadimos el resultado de la suma
+	    	Arbol arbolAux = new Arbol(res);
+	    	arrAux.add(arbolAux);
+	    	
+	    	//Referenciamos las dos ramas del arbol
+	    	arbolAux.meterDerecha(ramas.get(posNumMasPequenio));
+	    	arbolAux.meterIzquierda(ramas.get(posSegNumMasPequenio));
+	    	
+	    	//Convertimos el array de arboles auxiliar en el array ramas
+	    	
+	    	ramas = new ArrayList<Arbol>();
+	    	
+	    	//Lo rellenamos de nuevo   	
+	    	for(int i = 0; i < arrAux.size(); i++)
+	    	{
+	    		ramas.add(arrAux.get(i));
+	    	}
+	    	
+	    	System.out.println("a----------------a");
+	    	
+	    	for(int i = 0; i < ramas.size(); i++)
+	    	{
+	    		System.out.println(ramas.get(i).getNum());
+	    	}
+	    	
+        }
+        
+        System.out.println("El root tiene un valor de: " + ramas.get(0).getNum());
+        	
+        
+    }   
+    
 }
