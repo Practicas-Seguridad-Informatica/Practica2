@@ -163,7 +163,7 @@ public class CalculoFuente
         
         int auxCounter = 0;
 
-        int max = ramas.get(0).getNum();
+        int max = ramas.get(0).getNum() + 1;
         
         while(ramas.size() != 1)
         {   
