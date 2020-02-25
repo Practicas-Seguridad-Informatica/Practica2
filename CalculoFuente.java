@@ -162,12 +162,14 @@ public class CalculoFuente
         }
         
         int auxCounter = 0;
+
+        int max = ramas.get(0).getNum();
         
         while(ramas.size() != 1)
         {   
 	    	//Buscamos los dos más pequeños
-	    	int pos1 = ramas.get(0).getNum();
-	    	int pos2  = ramas.get(0).getNum();
+	    	int pos1 = max;
+	    	int pos2  = max;
 	    	int posNumMasPequenio = 0;
 	    	int posSegNumMasPequenio = 0;
 	        
