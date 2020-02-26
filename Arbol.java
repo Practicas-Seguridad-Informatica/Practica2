@@ -49,28 +49,26 @@ public class Arbol
 	
 	public void recorrerArbol(String code)
 	{
-		System.out.println("Num: " + this.num);
-
-		if(izquierda.hasRama())
+		if(this.hasRama()) //Si tiene hijos, seguiremos avanzando por el árbol
 		{
 			izquierda.recorrerArbol(code + "0");
-		}
-		else
-		{
-			//code = code + "0";
-			izquierda.setCode(code);
-		}
-
-		if(derecha.hasRama())
-		{
 			derecha.recorrerArbol(code + "1");
 		}
-		else
+		else //Si no tiene hijos, significará que es un nodo hoja, por lo que le asignaremos el código
 		{
-			//code = code + "1";
-			derecha.setCode(code);
+			this.setCode(code);
+			System.out.println(code);
 		}
-		
+	}
+
+	public void imprimirArbol()
+	{
+		if(this.hasRama())
+		{
+			System.out.println(this.num + "{" + this.izquierda.getNum() + ", " + this.derecha.getNum() + "}");
+			izquierda.imprimirArbol();
+			derecha.imprimirArbol();
+		}		
 	}
 
 	private void setCode(String num)
