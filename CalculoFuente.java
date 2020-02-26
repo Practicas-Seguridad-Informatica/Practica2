@@ -165,7 +165,7 @@ public class CalculoFuente
     	//Convertimos cada frecuencia en una rama del arbol
         for(int i = 0; i < arrCounter.size(); i++)
         {
-        	Arbol nuevaRama = new Arbol(arrCounter.get(i));
+        	Arbol nuevaRama = new Arbol(arrCounter.get(i), i);
         	
         	ramas.add(nuevaRama);
         }
@@ -217,7 +217,7 @@ public class CalculoFuente
                 }
 	    	}
 	    	//Por último aniadimos el resultado de la suma de esos dos que no hemos metido
-	    	Arbol arbolAux = new Arbol(res);
+	    	Arbol arbolAux = new Arbol(res, ramas.size() - 1);
 	    	arrAux.add(arbolAux);
 	    	
 	    	//Referenciamos las dos ramas del arbol
@@ -245,9 +245,22 @@ public class CalculoFuente
         
         System.out.println("El root tiene un valor de: " + ramas.get(0).getNum());
         	
-        ramas.get(0).recorrerArbol("");
+        ArrayList<Integer> productoLiPi = new ArrayList<Integer>();
+
+        ramas.get(0).recorrerArbol("", productoLiPi);
         System.out.println("FUnciona");
         ramas.get(0).imprimirArbol();
+
+        //Hacemos la suma para calcular la longitud del código
+        int longitudMedia = 0;
+
+        for(int i = 0; i < productoLiPi.size(); i++)
+        {
+            longitudMedia += productoLiPi.get(i);
+        }
+
+        System.out.println("La longitud media del código es: " + longitudMedia);
+
     }   
     
 }
