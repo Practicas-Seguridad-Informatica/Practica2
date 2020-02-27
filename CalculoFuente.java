@@ -261,6 +261,13 @@ public class CalculoFuente
 
         System.out.println("La longitud media del código es: " + longitudMedia);
 
+        float longitudBinaria = (float)longitudMedia / (float)txt.length();
+
+        System.out.println("La longitud BINARIA es: " + longitudBinaria);
+
+        float eficacia = (float)entropia / (float)longitudBinaria;
+
+        System.out.println("La eficacia es: " + eficacia);
     }   
     
 }
